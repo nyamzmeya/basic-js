@@ -19,8 +19,9 @@ class DepthCalculator {
   calc(arr) {
     return arr.reduce((previousValue, currentValue) => {
       if (Array.isArray(currentValue)) {
-        this.max.push(this.calc(currentValue));
-        return this.calc(currentValue) + previousValue;
+        let deep = this.calc(currentValue);
+        this.max.push(deep);
+        return deep + previousValue;
       } else return previousValue;
     }, 1);
   }
